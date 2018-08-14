@@ -13,3 +13,4 @@ builds
 *.sublime-workspace
 *.sublime-project
 *.code-workspace
+*.vscode*
