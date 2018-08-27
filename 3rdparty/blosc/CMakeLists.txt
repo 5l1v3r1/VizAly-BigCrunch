@@ -18,6 +18,8 @@ ExternalProject_Add(
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-external
     # disable install step
     INSTALL_COMMAND ""
+    # disable anoying constant checks during build
+    UPDATE_DISCONNECTED TRUE
 )
 
 # get external project source and binary directories
