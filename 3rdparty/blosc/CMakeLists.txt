@@ -57,6 +57,13 @@ add_dependencies(${PROJECT_NAME}
 # )
 
 # add external project include directories
-target_include_directories(${PROJECT_NAME}
-    INTERFACE ${SOURCE_DIR}/blosc
-)
+# ISSUE: https://gitlab.kitware.com/cmake/cmake/issues/15689
+# FIXED: https://gitlab.kitware.com/cmake/cmake/merge_requests/1264
+# CMake 3.11+
+# target_include_directories(${PROJECT_NAME}
+#    INTERFACE ${SOURCE_DIR}/blosc
+#)
+
+# Should work with older CMakes
+set_property(TARGET ${PROJECT_NAME} APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${SOURCE_DIR}/blosc)
+
