@@ -30,13 +30,13 @@ option(${NAME_ID}_INSTALL
 # option for building doxygen documentation
 option(${NAME_ID}_DOXYGEN
 	"Build doxygen documentation for ${PROJECT_NAME}."
-	ON
+	OFF
 )
 
 # option for building doxygen documentation only in release mode
 option(${NAME_ID}_DOXYGEN_RELEASE_ONLY
 	"Build doxygen documentation for ${PROJECT_NAME} only in Release mode."
-	ON
+	OFF
 )
 
 # add source files
@@ -146,7 +146,15 @@ elseif(NOT ${NAME_ID}_BUILD_STATIC)
 	endif()
 endif()
 
+set(PROJECT_INTERFACE_HEADER_DETAILS
+	include/bigcrunch/detail/darray.inl
+)
+
 if(${NAME_ID}_INSTALL)
+	install(FILES
+		${PROJECT_INTERFACE_HEADER_DETAILS}
+		DESTINATION include/${PROJECT_NAME}/detail
+	)
 	install(FILES
 		${PROJECT_INTERFACE_HEADER_FILES}
 		DESTINATION include/${PROJECT_NAME}
