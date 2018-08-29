@@ -20,6 +20,8 @@ ExternalProject_Add(
     INSTALL_COMMAND ""
     # disable anoying constant checks during build
     UPDATE_DISCONNECTED TRUE
+    # Enable fPIC for static->dynamic builds
+    CMAKE_ARGS "-DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=true"
 )
 
 # get external project source and binary directories
