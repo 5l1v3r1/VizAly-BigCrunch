@@ -10,6 +10,7 @@ build
 builds
 *_build
 *build*
+install
 *.sublime-workspace
 *.sublime-project
 *.code-workspace
