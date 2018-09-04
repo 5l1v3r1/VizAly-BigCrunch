@@ -6,6 +6,12 @@
 
 #pragma once
 
+#ifdef _WIN32
+#define EXPORT __declspec(dllexport)
+#else
+#define EXPORT
+#endif
+
 #include <cstdint>
 
 #include <bigcrunch/types.hpp>
@@ -37,7 +43,7 @@ namespace bigcrunch
          * 
          * @param settings An unordered_map<int, int> for settings.
          */
-        bigcrunch(const setting_t &settings);
+        EXPORT bigcrunch(const setting_t &settings);
 
         /**
          * @brief Compress data
@@ -49,7 +55,7 @@ namespace bigcrunch
          * @param output Compressed one-dimensional byte array
          * @return std::uint64_t Size of the byte array
          */
-        std::uint64_t compress(const darray &data, std::uint8_t **output) const;
+        EXPORT std::uint64_t compress(const darray &data, std::uint8_t **output) const;
 
         /**
          * @brief Decompress data
@@ -61,7 +67,7 @@ namespace bigcrunch
          * @param size Size of the byte array
          * @return darray Reconstructed floating-point data
          */
-        darray decompress(const std::uint8_t *data, std::uint64_t size) const;
+        EXPORT darray decompress(const std::uint8_t *data, std::uint64_t size) const;
 
     protected:
         int error, tolerance, nthreads;
